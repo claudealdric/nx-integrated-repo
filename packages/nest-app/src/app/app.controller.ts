@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 import { AppService } from './app.service';
 
@@ -9,5 +9,10 @@ export class AppController {
   @Get()
   sayHello() {
     return this.appService.sayHello();
+  }
+
+  @Get(':number')
+  isOdd(@Param('number') number: string) {
+    return this.appService.isOdd(number);
   }
 }
