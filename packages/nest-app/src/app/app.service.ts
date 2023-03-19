@@ -1,9 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
+import { ConfigService } from '@nestjs/config';
 import { isOdd } from '@nx-integrated/is-odd';
 
 @Injectable()
 export class AppService {
+  constructor(private readonly configService: ConfigService) {}
+
   isOdd(input: string) {
     const parsedNumber = Number(input);
 
@@ -18,8 +21,10 @@ export class AppService {
   }
 
   sayHello(): string {
-    const greeting = this.convertFirstLetterToUppercase(process.env.GREETING);
-    const name = process.env.NAME;
+    const greeting = this.convertFirstLetterToUppercase(
+      this.configService.get<string>('GREETING')
+    );
+    const name = this.configService.get<string>('NAME');
     return `${greeting}, ${name}.`;
   }
 
