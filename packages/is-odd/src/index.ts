@@ -1,1 +1,1 @@
-export * from './lib/is-odd';
+export * from "./lib/is-odd";

@@ -1,5 +1,5 @@
-import { isEven } from '@nx-integrated/is-even';
+import { isEven } from "@nx-integrated/is-even";
 
 export function isOdd(n: number): boolean {
-  return !isEven(n);
+	return !isEven(n);
 }
